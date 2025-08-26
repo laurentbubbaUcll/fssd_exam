@@ -14,6 +14,11 @@ export type User = {
   role?: string;
 };
 
+export type Classroom = {
+  id: number;
+  name: string;
+};
+
 export type StatusMessage = {
   message: string;
   type: 'error' | 'success';

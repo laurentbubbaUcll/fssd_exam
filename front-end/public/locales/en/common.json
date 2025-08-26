@@ -6,6 +6,7 @@
     "nav": {
       "home": "Home",
       "classrooms": "Classrooms",
+      "add-classroom": "Add Classroom",
       "teachers": "Teachers",
       "add-teacher": "Add Teacher",
       "login": "Login",
@@ -25,5 +26,17 @@
   "home": {
     "title": "Good luck with the exam!",
     "description": ""
+  },
+  "classroom": {
+    "title": "Add Classroom",
+    "added-classroom": "Added classroom with name {{name}} and ID {{id}}",
+    "already-exists-classroom": "Classroom already exists",
+    "submit-button": "Submit",
+    "validate": {
+      "name":"Name is required"
+    },
+    "label": {
+      "name": "Name"
+    }
   }
 }

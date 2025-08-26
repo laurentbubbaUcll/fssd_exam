@@ -1,6 +1,8 @@
 import LearningPath from '@components/learning-path';
+import TeacherService from '@services/TeacherService';
 import { Teacher, User } from '@types';
 import { useEffect, useState } from 'react';
+import useSWR, { mutate } from 'swr';
 
 type Props = {
   teachers: Teacher[];
@@ -24,8 +26,19 @@ const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
             </tr>
           </thead>
           <tbody>
-            {/* Render a row for each teacher containing name and learning path */}
-            {/* For question 1.c, you can use the LearningPath component. */}
+            {teachers.map((teacher, index) =>(
+              <tr key={index}>
+                <td>{teacher.user.firstName + " " + teacher.user.lastName}</td>
+                {(loggedInUser?.role === "admin") ? (
+                  <td>                  
+                    <LearningPath teacherId={teacher.id} learningPath={teacher.learningPath} />
+                  </td>
+                ) : (
+                  <td>{teacher.learningPath}</td>
+                )}
+              </tr>
+            ))
+            }
           </tbody>
         </table>
       </section>

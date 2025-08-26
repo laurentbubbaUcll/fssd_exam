@@ -1,15 +1,27 @@
-const getAllTeachers = () => {
-  /*
-    Call the back-end API on the route /teachers to get all teachers.
-    You will need to implement that route in the back-end.
-  */
+import { Teacher } from "@types";
+
+const getAllTeachers = async (): Promise<Teacher[]> => {
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/teachers", {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+  })
+
+  const data: Teacher[] = await response.json();
+  return data;
 };
 
-const updateLearningPath = (teacherId: number, learningPath: string) => {
-  /*
-    Call the back-end API on the route /teachers/:id/learningpath to update the learning path for the teacher.
-    You will need to implement that route in the back-end.
-  */
+const updateLearningPath = async (teacherId: number, learningPath: string) => {
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + `/teachers/${teacherId}/learningpath?learningPath=${learningPath}`, {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+    },
+  })
+
+  const data: Teacher[] = await response.json();
+  return data;
 };
 
 const TeacherService = {
