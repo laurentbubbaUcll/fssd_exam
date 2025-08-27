@@ -15,12 +15,25 @@ export class Teacher {
         updatedAt?: Date;
         learningPath: string;
     }) {
+        this.validate(teacher)
         this.id = teacher.id;
         this.user = teacher.user;
         this.createdAt = teacher.createdAt;
         this.updatedAt = teacher.updatedAt;
         this.learningPath = teacher.learningPath;
     }
+
+    validate(teacher: {
+        user: User;
+        learningPath: string;
+    }) {
+        if (!teacher.user) {
+            throw new Error('User is required');
+        }
+        if (!teacher.learningPath?.trim()) {
+            throw new Error('Learning path is required');
+        }
+    }   
 
     static from({
         id,
